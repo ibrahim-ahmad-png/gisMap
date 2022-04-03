@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Leaflet layers control</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+  
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
+  
+    <script src="https://unpkg.com/wrld.js@1.x.x"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+    <style>
+      #floorButtons {
+        position: absolute;
+        z-index: 20;
+      }
+
+      #floorButtons button {
+        display: block;
+        width: 100%;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+      <div class="container-fluid">
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav m-auto">
+                  <li class="nav-item">
+                      <a  class="nav-link active" aria-current="page" href="index1.html">4Maps</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="index.html">Single Map</a>
+                  </li>
+        
+             
+                    <li class="nav-item">
+                      <a class="nav-link" href="Weather App in JavaScript/index.html">weather Api</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="Day17-MovieApp/index.html">Movies Api</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="youtube-clone-master/youtube-clone-master/index.html">Youtube Api</a>
+                  </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="index4_3D.html">3D Sound Map</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="index5_3d.html">3D Map</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="index103desri.html">Weather 3D Map</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <div style="position: relative">
+    <div id="floorButtons">
+      <button type="button" onclick="topFloor()">Top Floor</button>
+      <button type="button" onclick="moveUp()">Move Up</button>
+      <button type="button" onclick="moveDown()">Move Down</button>
+      <button type="button" onclick="bottomFloor()">Bottom Floor</button>
+      <button type="button" onclick="exitIndoors()">Exit</button>
+    </div>
+
+    <div id="map" style="height: 700px"></div>
+    <script>
+      var map = Wrld.map("map", "9182ded5a002ac7958bfa280e9bfbebf", {
+        center: [37.781949, -122.404784],
+        zoom: 17,
+        indoorsEnabled: true
+      });
+
+      var marker = Wrld.marker([37.781941, -122.404752], {        
+        title: "This is indoors!",
+        indoorMapId: "intercontinental_hotel_8628",
+        indoorMapFloorId: 1
+      }).addTo(map);      
+
+      function topFloor() {
+        var indoorMap = map.indoors.getActiveIndoorMap();
+
+        if (indoorMap) {
+          map.indoors.setFloor(indoorMap.getFloorCount() - 1);
+        }
+      }
+
+      function moveUp() {
+        map.indoors.moveUp();
+      }
+
+      function moveDown() {
+        map.indoors.moveDown();
+      }
+
+      function bottomFloor() {
+        map.indoors.setFloor(0);
+      }
+
+      function exitIndoors() {
+        map.indoors.exit();
+      }
+    </script>
+  </div>
+  </body>
+</html>
