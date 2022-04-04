@@ -124,18 +124,7 @@
     <!-- bing map -->
 
 
- <script type='text/javascript'
-    src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[AuBhFBfrojlG-_Ep0G8GLVbJ5s0CfEzXqjOJZKDxJmEvAMzik7z4nouoy2ibKoWJ]' 
-    async defer></script>
 
-<script type='text/javascript'>
-function GetMap()
-{
-var map = new Microsoft.Maps.Map('#map2');
-
-//Add your post map load code here.
-}
-</script>
 
 
 <!-- this is for mapbox -->
@@ -169,6 +158,30 @@ var map = new Microsoft.Maps.Map('#map2');
           });
         });
       </script>
+	
+
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps.css'>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/maps/maps-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.5.0/services/services-web.min.js"></script>
+  
+
+<script type='text/javascript'>
+
+const API_KEY = '1IH5lGtK5nhGSB7UmteMKBmIZ9gjPdAt';
+const APPLICATION_NAME = 'My Application';
+const APPLICATION_VERSION = '1.0';
+
+ 
+tt.setProductInfo(APPLICATION_NAME, APPLICATION_VERSION);
+const GOLDEN_GATE_BRIDGE = {lng: -122.47483, lat: 37.80776};
+ 
+var map1 = tt.map({
+  key: API_KEY,
+  container: 'map2',
+  center: GOLDEN_GATE_BRIDGE,
+  zoom: 12
+});
+</script>
 </body>
 
 </html>
